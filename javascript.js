@@ -1,7 +1,7 @@
 const body = document.querySelector("body");
 const container = document.createElement("div");
 container.classList.add("container");
-container.style.cssText = "display:flex; flex-flow:row wrap; width: 965px; border: 1px solid black";
+container.style.cssText = "display:flex; flex-flow:row wrap; width: 962px; height:802px; border: 1px solid black";
 body.style.margin="0";
 let squareGridArr=[];
 let size=16;
@@ -25,6 +25,7 @@ asterisk3.style.boxSizing= "inherit";
 */
 
 
+
 const button = document.createElement("button");
 button.textContent="start a new grid";
 button.addEventListener("click", ()=>{
@@ -37,8 +38,6 @@ button.addEventListener("click", ()=>{
     if (size === null){
         return;
     }
-    console.log(`tempSize: ${tempSize}`)
-    console.log(`size: ${size}`)
     deleteAll(tempSize);
     resetCustom();
     setCustom(size);
@@ -47,6 +46,9 @@ button.addEventListener("click", ()=>{
 
 const topMenu = document.createElement("div")
 topMenu.style.cssText="display:flex; align-items:center; justify-content:center; gap: 20px"
+
+const title = document.createElement("h3");
+title.textContent="etch-a-sketch"
 
 const explanation = document.createElement("h3");
 explanation.textContent="press r to restart"
@@ -84,9 +86,9 @@ function setCustom(size=16){
     for(let i =0; i< size*size; i++){
         let currentSquare=document.createElement("div")
         currentSquare.classList.add(`${i}`);
-        currentSquare.style.cssText = `height:${960/size}px; width:${960/size}px `
+        currentSquare.style.cssText = `height:${800/size}px; width:${960/size}px `
         squareGridArr.push(currentSquare);
-    
+        
         currentSquare.addEventListener("mouseenter",()=>{
             currentSquare.style.backgroundColor="black";
         })
@@ -96,6 +98,7 @@ function setCustom(size=16){
 
 
 body.appendChild(topMenu)
+topMenu.appendChild(title);
 topMenu.appendChild(button);
 topMenu.appendChild(explanation);
 body.appendChild(container);
